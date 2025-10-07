@@ -13,5 +13,15 @@ if __name__ == "__main__":
 
     for text in examples:
         print(f"Original: {text}")
-        print(f"Normalized: {tm.normalize_text(text)}")
+
+        # Split text into tokens by whitespace
+        tokens = text.strip().split()
+
+        # Normalize each token separately
+        normalized_tokens = [tm.encode(token) for token in tokens]
+
+        # Join back into a sentence
+        normalized_text = " ".join(normalized_tokens)
+
+        print(f"Normalized: {normalized_text}")
         print("-" * 60)

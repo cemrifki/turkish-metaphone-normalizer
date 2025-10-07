@@ -58,13 +58,13 @@ python main.py
 
 ```bash
 Original: meclis
-Metaphone: MAJlAS
+Metaphone: MJLS
 
 Original: güzel
-Metaphone: GASAl
+Metaphone: GSL
 
 Original: şeker
-Metaphone: SAGAR
+Metaphone: SGR
 ```
 
 ### 🔧 Example Python usage
@@ -75,23 +75,24 @@ from src.turkish_metaphone import TurkishMetaphone
 tm = TurkishMetaphone()  # No arguments here
 
 # Then call the normalization methods on each word:
-words = ["meclis", "güzel", "şeker", "mejlis", "çağla", "sokak", "zeki", "çocuk"]
+words = ["meclis", "güzel", "şeker", "mejlis", "çağla", "sokak", "armut", "zeki", "çocuk"]
 
 for w in words:
-    print(f"{w:10s} → {tm.normalize_word(w)}")
+    print(f"{w:10s} → {tm.encode(w)}")
 ```
 
 #### Output:
 
 ```bash
-meclis     → MAJlAS
-güzel      → GASAl
-şeker      → SAGAR
-mejlis     → MAJlAS
-çağla      → JAGlA
-sokak      → SAGAG
-zeki       → SAGA
-çocuk      → JAJAG
+meclis     → MJLS
+güzel      → GSL
+şeker      → SGR
+mejlis     → MJLS
+çağla      → JGL
+sokak      → SGG
+armut      → ARMT
+zeki       → SG
+çocuk      → JJG
 ```
 
 ---

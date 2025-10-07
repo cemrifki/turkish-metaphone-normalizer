@@ -10,7 +10,7 @@ class TurkishMetaphone:
     """
 
     def __init__(self):
-        # Define phonetic groups
+        # Define Turkish phonetic equivalence rules
         self.rules = [
             (r"[cçj]", "J"),       # c, ç, j -> J
             (r"[şsz]", "S"),       # ş, s, z -> S
@@ -20,27 +20,31 @@ class TurkishMetaphone:
             (r"[fv]", "F"),        # f, v -> F
             (r"[mn]", "M"),        # m, n -> M
             (r"[r]", "R"),         # r -> R
+            (r"[l]", "L"),         # l -> L
             (r"[y]", "Y"),         # y -> Y
-            (r"[aeıioöuü]", "A"),  # vowels -> A
+            (r"[aeıioöuü]", "A"),  # all vowels -> A
         ]
 
-    def normalize_word(self, word: str) -> str:
-        """Normalize a single Turkish word phonetically."""
+    def encode(self, word: str) -> str:
+        # Normalize input
         word = word.lower().strip()
 
-        # Remove non-alphabetic chars
-        word = re.sub(r"[^a-zçğıöşü]", "", word)
+        # Drop duplicate adjacent letters at the beginning
+        word = re.sub(r"^(.)(\1)+", r"\1", word)
 
-        # Apply rules
-        for pattern, repl in self.rules:
-            word = re.sub(pattern, repl, word)
+        # Apply phonetic rules **progressively**
+        w = word
+        for pattern, replacement in self.rules:
+            w = re.sub(pattern, replacement, w)
 
-        # Collapse consecutive duplicates (e.g. SS -> S)
-        word = re.sub(r"(.)\1+", r"\1", word)
+        # Step 2: Remove duplicate consecutive letters (optional but common in metaphone)
+        w = re.sub(r"(.)\1+", r"\1", w)
 
-        return word
+        # Step 3: Keep only leading vowel
+        if w and w[0] == "A":
+            w = w[0] + re.sub(r"A", "", w[1:])
+        else:
+            w = re.sub(r"A", "", w)
 
-    def normalize_text(self, text: str) -> list[str]:
-        """Normalize all words in a text."""
-        words = re.findall(r"\b[\wçğıöşü]+\b", text.lower())
-        return [self.normalize_word(w) for w in words]
+        return w
+
