@@ -11,7 +11,7 @@ This project adapts the idea for **Turkish phonetics**, accounting for similar-s
 
 Turkish words may often differ in **spelling but not in pronunciation** — for instance:
 - `meclis` and `mejlis` sound almost identical, though spelled differently.  
-- `güzel` → `gsl`, simplifying pronunciation-based matching.
+- `güzel` → `gusel`, simplifying pronunciation-based matching.
 - `şeker`, `seker`, and `zheker` could all normalize to a similar phonetic root.
 
 This algorithm aims to support **text normalization, fuzzy matching, and search applications** in Turkish Natural Language Processing (NLP).
@@ -56,16 +56,15 @@ python main.py
 
 ### 2️⃣ Example output
 
-
 ```bash
 Original: meclis
-Metaphone: MJLS
+Metaphone: MAJlAS
 
 Original: güzel
-Metaphone: GSL
+Metaphone: GASAl
 
 Original: şeker
-Metaphone: SKR
+Metaphone: SAGAR
 ```
 
 ### 🔧 Example Python usage
