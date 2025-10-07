@@ -29,18 +29,21 @@ class TurkishMetaphone:
         # Normalize input
         word = word.lower().strip()
 
-        # Drop duplicate adjacent letters at the beginning
+        # Step 1: Remove non-Turkish letters/symbols
+        word = re.sub(r"[^a-zçğıöşü]", "", word)
+
+        # Step 2: Drop duplicate adjacent letters at the beginning
         word = re.sub(r"^(.)(\1)+", r"\1", word)
 
-        # Apply phonetic rules **progressively**
+        # Step 3: Apply phonetic rules **progressively**
         w = word
         for pattern, replacement in self.rules:
             w = re.sub(pattern, replacement, w)
 
-        # Step 2: Remove duplicate consecutive letters (optional but common in metaphone)
+        # Step 4: Remove duplicate consecutive letters (optional but common in metaphone)
         w = re.sub(r"(.)\1+", r"\1", w)
 
-        # Step 3: Keep only leading vowel
+        # Step 5: Keep only leading vowel
         if w and w[0] == "A":
             w = w[0] + re.sub(r"A", "", w[1:])
         else:
