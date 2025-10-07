@@ -70,7 +70,7 @@ Metaphone: SKR
 
 ### 🔧 Example Python usage
 
-```bash
+```python
 from src.turkish_metaphone import TurkishMetaphone
 
 tm = TurkishMetaphone()  # No arguments here
