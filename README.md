@@ -106,6 +106,7 @@ zeki       → SK
 ## 📜 License
 
 MIT License © 2025 Cem Rıfkı Aydın
+
 Free to use and modify with attribution.
 
 ---
