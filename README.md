@@ -82,9 +82,9 @@ for w in words:
 
 ```bash 
 meclis     → MJLS
-mejlis     → MJLS
 güzel      → GSL
 şeker      → SKR
+mejlis     → MJLS
 zeki       → SK
 çocuk      → CCK
 ```
