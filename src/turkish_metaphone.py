@@ -32,7 +32,7 @@ class TurkishMetaphone:
         # Step 1: Remove non-Turkish letters/symbols
         word = re.sub(r"[^a-zçğıöşü]", "", word)
 
-        # Step 2: Drop duplicate adjacent letters at the beginning
+        # Step 2: Drop duplicate adjacent letters
         word = re.sub(r"(.)(\1)+", r"\1", word)
 
         # Step 3: Apply phonetic rules **progressively**
