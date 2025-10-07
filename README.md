@@ -71,11 +71,15 @@ Metaphone: SKR
 ### 🔧 Example Python usage
 
 ```bash
-from src.turkish_metaphone import turkish_metaphone
+from src.turkish_metaphone import TurkishMetaphone
 
+tm = TurkishMetaphone()  # No arguments here
+
+# Then call the normalization methods on each word:
 words = ["meclis", "güzel", "şeker", "mejlis", "zeki", "çocuk"]
+
 for w in words:
-    print(f"{w:10s} → {turkish_metaphone(w)}")
+    print(f"{w:10s} → {tm.normalize_word(w)}")
 ```
 
 #### Output:
