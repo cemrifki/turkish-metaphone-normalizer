@@ -78,7 +78,6 @@ tm = TurkishMetaphone()  # No arguments here
 # Then call the normalization methods on each word:
 words = ["meclis", "güzel", "şeker", "mejlis", "çağla", "sokak", "zeki", "çocuk"]
 
-
 for w in words:
     print(f"{w:10s} → {tm.normalize_word(w)}")
 ```
